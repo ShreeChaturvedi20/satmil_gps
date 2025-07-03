@@ -1,19 +1,39 @@
-🚁️ SatMil GPS: Satellite & Drone Tactical Routing + AI Terrain Detection Simulation
-SatMil GPS is a simulation platform for modeling satellite-based drone navigation and tactical decision-making in military environments. It simulates GNSS jamming, fallback routing, telemetry, and now includes AI/ML-based feature detection from multi-source satellite imagery.
+# 🚁️ SatMil GPS: Satellite & Drone Tactical Routing + AI Terrain Detection Simulation
 
-🚀 Features
-🛰️ Graph-based routing engine with fallback under jamming
-🎮 PyQt6 GUI dashboard to visualize paths, status, and telemetry
-🧠 AI/ML detection of glacial lakes, roads, and urban drainage from satellite imagery
-📡 Telemetry + signal logging for signal strength and mission history
-📈 Performance analytics for route health, latency, and dropouts
-🔁 ROS 2 (optional) integration for GNSS & drone node communication
-🌍 Use Cases
-Tactical battlefield drone routing
-GNSS signal jamming and fallback testing
-Satellite-assisted terrain intelligence
-AI-driven geospatial mapping
-🏗️ System Architecture
+**SatMil GPS** is a simulation platform for modeling satellite-based drone navigation and tactical decision-making in **military** and **disaster relief** environments. It simulates **GNSS jamming**, **fallback routing**, **telemetry**, and now includes **AI/ML-based feature detection** from multi-source satellite imagery.
+
+---
+
+## 🎯 Project Objective
+
+SatMil GPS is designed to simulate real-time satellite and drone navigation in GNSS-contested or high-risk environments. The project supports tactical decision-making with fallback routing, AI-driven terrain feature extraction, and signal resilience analytics — applicable to both **military operations** and **disaster relief** (e.g., **flooded urban zones**, **glacial outburst detection**, and **inaccessible terrains**).
+
+---
+
+## 🚀 Features
+
+* 🛰️ **Graph-based routing engine** with fallback under jamming
+* 🎮 **PyQt6 GUI dashboard** to visualize paths, status, and telemetry
+* 🧠 **AI/ML detection** of glacial lakes, roads, and urban drainage from satellite imagery
+* 📡 **Telemetry + signal logging** for signal strength and mission history
+* 📈 Performance analytics for route health, latency, and dropouts
+* 🔁 ROS 2 (optional) integration for GNSS & drone node communication
+
+---
+
+## 🌍 Use Cases
+
+* Tactical battlefield drone routing
+* GNSS signal jamming and fallback testing
+* Satellite-assisted terrain intelligence
+* AI-driven geospatial mapping
+* **Disaster relief operations** (e.g., flood zone routing, blocked urban paths)
+
+---
+
+## 🏗️ System Architecture
+
+```
 Satellite Imagery → [AI/ML Detector]
                           ↓
 Geo Features → [Graph Generator / Map Updater]
@@ -21,7 +41,13 @@ Geo Features → [Graph Generator / Map Updater]
 Backend Routing Engine → GUI Dashboard
                           ↓
 Telemetry Logger + Analytics
-📂 Project Structure
+```
+
+---
+
+## 📂 Project Structure
+
+```
 satmil_gps/
 ├── app.py                      # Main launcher
 ├── mission_sim.py             # Simulation orchestrator
@@ -70,48 +96,93 @@ satmil_gps/
     ├── project_report.pdf
     ├── presentation.pptx
     └── system_architecture.drawio
-⚙️ Installation & Setup
-Requirements:
-Python 3.9+
-networkx, pandas, PyQt6, matplotlib
-(Optional for AI): torch, opencv-python, rasterio, geopandas
-Setup
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### Requirements:
+
+* Python 3.9+
+* `networkx`, `pandas`, `PyQt6`, `matplotlib`
+* (Optional for AI): `torch`, `opencv-python`, `rasterio`, `geopandas`
+
+### Setup
+
+```bash
 git clone https://github.com/your-username/satmil_gps.git
 cd satmil_gps
 python -m venv venv
 source venv/bin/activate      # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-▶️ Run Simulation (CLI or GUI)
+```
+
+---
+
+## ▶️ Run Simulation (CLI or GUI)
+
+```bash
 python mission_sim.py   # For CLI simulation
 python app.py           # For GUI dashboard
+```
+
 You will see the GUI displaying:
 
-Route from source to target
-Logs for fallback if jamming is triggered
-Signal strength per node (telemetry)
-🤖 AI Feature Detection (Optional)
+* Route from source to target
+* Logs for fallback if jamming is triggered
+* Signal strength per node (telemetry)
+
+---
+
+## 🤖 AI Feature Detection (Optional)
+
+```bash
 python ai_module/detect_features.py --image_path="input/satellite.png"
 python ai_module/generate_graph.py --mask="output/mask.png"
+```
+
 Outputs a new battlefield map CSV that is used for routing.
 
-📊 Logs & Analytics
+Example: AI detects **flooded zones** in urban satellite images, and the generated graph avoids those nodes in pathfinding.
+
+---
+
+## 📊 Logs & Analytics
+
 Output files:
 
-data/logs/signal_log.csv
-data/logs/route_history.json
-Use analytics/ scripts to generate stats on signal loss, dropouts, fallback success.
+* `data/logs/signal_log.csv`
+* `data/logs/route_history.json`
 
-🧠 Skills Demonstrated
-Graph Algorithms (Dijkstra/A*)
-PyQt6 GUI Programming
-ROS 2 nodes (optional)
-Geospatial AI from satellite imagery
-Signal health and telemetry analysis
-Test-driven Python development
-📜 License
+Use `analytics/` scripts to generate stats on signal loss, dropouts, fallback success.
+
+---
+
+## 🧠 Skills Demonstrated
+
+* Graph Algorithms (Dijkstra/A\*)
+* PyQt6 GUI Programming
+* ROS 2 nodes (optional)
+* Geospatial AI from satellite imagery
+* Signal health and telemetry analysis
+* Test-driven Python development
+
+---
+
+## 📜 License
+
 MIT License – free to use, modify, and distribute with attribution.
 
-✉️ Contact
-Author: Shree Chaturvedi 📧 shreechaturvedi2004@gmail.com 🌐 GitHub: https://github.com/Shreechaturvedi20
+---
 
-Ready to simulate satellite-routing and build AI-pow
+## ✉️ Contact
+
+**Author**: *Shree Chaturvedi*
+📧 *[shreechaturvedi2004@gmail.com](mailto:shreechaturvedi2004@gmail.com)*
+🌐 GitHub: `https://github.com/`Shreechaturvedi20
+
+---
+
+Ready to simulate satellite-routing and build AI-powered terrain systems!
+
