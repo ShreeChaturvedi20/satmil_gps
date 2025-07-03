@@ -1,0 +1,62 @@
+# 📝 Problem Statement: SatMil GPS – Tactical Drone & Satellite Navigation in GNSS-Contested Environments
+
+## 🎯 Overview
+
+Modern military and disaster relief operations increasingly rely on drones and satellite data for mission execution, communication, and logistics. However, these systems are often vulnerable to **GNSS jamming**, **signal degradation**, and **dynamic terrain changes** caused by natural or man-made disruptions.
+
+This project addresses the need for a **resilient, intelligent simulation platform** capable of modeling tactical drone routing in compromised environments using:
+
+* Satellite-aided routing
+* Jamming detection and fallback systems
+* AI/ML-driven terrain feature detection
+
+---
+
+## 🚨 Core Challenges
+
+1. **GNSS Vulnerability**: Military drones often face **navigation failure** due to GNSS jamming or spoofing, reducing their effectiveness in hostile terrain.
+2. **Dynamic Terrain**: Terrain changes due to **floods**, **landslides**, or **urban infrastructure damage** demand **real-time rerouting**.
+3. **Limited Situational Awareness**: Most traditional routing systems lack integration of **multi-source satellite imagery** and **AI-driven map updating**.
+4. **Lack of Unified Simulation Tools**: Existing tools either simulate hardware or routing separately — very few offer an integrated tactical + AI + telemetry simulation system.
+
+---
+
+## 🧠 Problem Statement
+
+Design and implement a **modular simulation system** that enables:
+
+* Tactical drone and satellite **navigation simulation** across a customizable terrain graph
+* Handling of **GNSS signal jamming** through intelligent **fallback routing algorithms**
+* Use of **AI/ML models** to extract terrain features like roads, water bodies, and urban infrastructure from **satellite imagery**, and convert them to map data
+* Visualization through an interactive **GUI dashboard** to monitor signal health, rerouting, and performance
+* Logging and analytics of **telemetry**, **signal loss**, and **mission efficiency**
+
+---
+
+## 📌 Objectives
+
+* Model and simulate **GNSS-jammed scenarios**
+* Integrate **multi-source satellite imagery** into a routing engine
+* Apply **deep learning** to identify mission-relevant geospatial features
+* Visualize paths and telemetry using a **PyQt6 GUI**
+* Extend to **dual-use domains**: military and disaster relief (e.g., flood zone detection and bypass routing)
+
+---
+
+## 🌍 Real-World Relevance
+
+This simulation platform can serve as a prototype for:
+
+* DRDO/ISRO satellite-aided tactical planning systems
+* Drone navigation in post-disaster zones (e.g., floods, earthquakes)
+* AI-aided GIS decision support systems for public safety and military applications
+
+---
+
+## 📎 Deliverables
+
+* Simulation engine with fallback routing logic
+* AI/ML terrain detection module (roads, lakes, drainage systems)
+* Visual dashboard with real-time route + telemetry monitoring
+* Complete dataset (maps, logs, test cases)
+* Technical documentation & project report
