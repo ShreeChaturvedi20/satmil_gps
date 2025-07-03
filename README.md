@@ -1,40 +1,39 @@
-# 🚁️ SatMil GPS: Satellite & Drone Tactical Routing Simulation
+# 🚁️ SatMil GPS: Satellite & Drone Tactical Routing + AI Terrain Detection Simulation
 
-**SatMil GPS** is a simulation platform that models satellite-based navigation and drone control in **military environments** with potential **GNSS jamming**, **fallback routing**, and **real-time telemetry visualization**.
-
-Built using:
-
-* 🧠 Python (DSA: Graph Algorithms)
-* 🎮 PyQt6 GUI
-* 🧵 ROS 2 (GNSS, jamming, drone control nodes)
-* 🗌 Battlefield maps via CSV
-* 📊 Telemetry & analytics logging
+**SatMil GPS** is a simulation platform for modeling satellite-based drone navigation and tactical decision-making in **military environments**. It simulates **GNSS jamming**, **fallback routing**, **telemetry**, and now includes **AI/ML-based feature detection** from multi-source satellite imagery.
 
 ---
 
-## 🌍 Use Case
+## 🚀 Features
 
-This project simulates **tactical battlefield routing** where:
+* 🛰️ **Graph-based routing engine** with fallback under jamming
+* 🎮 **PyQt6 GUI dashboard** to visualize paths, status, and telemetry
+* 🧠 **AI/ML detection** of glacial lakes, roads, and urban drainage from satellite imagery
+* 📡 **Telemetry + signal logging** for signal strength and mission history
+* 📈 Performance analytics for route health, latency, and dropouts
+* 🔁 ROS 2 (optional) integration for GNSS & drone node communication
 
-* Satellites provide GPS coordinates
-* Drones must navigate across nodes
-* **Jamming zones** trigger alternate routes
-* GUI dashboard visualizes drone position, signal health, route efficiency
+---
+
+## 🌍 Use Cases
+
+* Tactical battlefield drone routing
+* GNSS signal jamming and fallback testing
+* Satellite-assisted terrain intelligence
+* AI-driven geospatial mapping
 
 ---
 
 ## 🏗️ System Architecture
 
 ```
-ROS 2 Nodes (GPS + Jamming)
-       ↓
- [Routing Manager]
-       ↓
-Backend (Graph Engine: Dijkstra / A*)
-       ↓
-Frontend (PyQt6 GUI Dashboard)
-       ↓
-Analytics & Logs
+Satellite Imagery → [AI/ML Detector]
+                          ↓
+Geo Features → [Graph Generator / Map Updater]
+                          ↓
+Backend Routing Engine → GUI Dashboard
+                          ↓
+Telemetry Logger + Analytics
 ```
 
 ---
@@ -45,125 +44,135 @@ Analytics & Logs
 satmil_gps/
 ├── app.py                      # Main launcher
 ├── mission_sim.py             # Simulation orchestrator
-├── README.md                  # This file
 ├── requirements.txt           # Dependencies
+├── README.md                  # This file
 
-├── backend/                   # Core routing and jamming logic
-│   ├── graph_engine.py
-│   ├── routing_manager.py
-│   ├── telemetry_queue.py
-│   └── jamming_simulation.py
+├── backend/                   # Core simulation logic
+│   ├── graph_engine.py        # Dijkstra/A*, graph construction
+│   ├── jamming_simulation.py # Jamming zone logic
+│   ├── routing_manager.py    # Manages routing logic
+│   └── telemetry_queue.py    # Signal logging system
 
-├── frontend/                  # PyQt6 GUI components
-│   ├── ui_main.py
-│   ├── map_window.py
-│   ├── dashboard_panel.py
-│   └── style.qss
+├── frontend/                  # PyQt6 GUI
+│   ├── ui_main.py             # Main dashboard
+│   ├── map_window.py          # Map viewer
+│   ├── dashboard_panel.py     # Status panel
+│   └── style.qss              # UI styling
 
-├── data/                      # Battlefield map, units, logs
-│   ├── battlefield_map.csv
-│   ├── satellites.json
-│   ├── units.csv
+├── data/                      # Input/output data
+│   ├── battlefield_map.csv    # Terrain graph
+│   ├── satellites.json        # Satellite positions
+│   ├── units.csv              # Troop positions
 │   └── logs/
 │       ├── signal_log.csv
 │       └── route_history.json
 
-├── models/                    # CAD models (CanSat, CubeSat)
-│   └── flight_dynamics.pdf
-
-├── analytics/                 # Route efficiency and signal metrics
+├── analytics/                 # Metrics & evaluation
 │   ├── performance_metrics.py
 │   └── signal_health.py
 
-├── tests/                     # Unit and functional tests
+├── models/                    # CAD models, dynamics
+│   ├── cansat.SLDPRT
+│   ├── cubesat.SLDPRT
+│   └── flight_dynamics.pdf
+
+├── tests/                     # Testing
 │   ├── test_graph_engine.py
 │   └── test_ui_responsiveness.py
 
-└── docs/                      # Presentation and reports
+├── ai_module/                 # AI/ML Feature Detection
+│   ├── detect_features.py     # Runs segmentation / model inference
+│   ├── generate_graph.py      # Converts detections into map/graph
+│   └── pretrained_models/     # Folder for ML weights
+
+└── docs/                      # Docs and report
     ├── project_report.pdf
-    └── presentation.pptx
+    ├── presentation.pptx
+    └── system_architecture.drawio
 ```
 
 ---
 
-## 🚀 Quick Start
+## ⚙️ Installation & Setup
 
-### 🔧 Requirements
+### Requirements:
 
 * Python 3.9+
-* ROS 2 (Humble/Foxy)
-* PyQt6, pandas, networkx, matplotlib
+* `networkx`, `pandas`, `PyQt6`, `matplotlib`
+* (Optional for AI): `torch`, `opencv-python`, `rasterio`, `geopandas`
 
-### ⚙️ Installation
+### Setup
 
 ```bash
 git clone https://github.com/your-username/satmil_gps.git
 cd satmil_gps
+python -m venv venv
+source venv/bin/activate      # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ---
 
-### ▶️ Run Simulation (Standalone)
+## ▶️ Run Simulation (CLI or GUI)
 
 ```bash
-python app.py
+python mission_sim.py   # For CLI simulation
+python app.py           # For GUI dashboard
 ```
 
-You will see:
+You will see the GUI displaying:
 
-* A PyQt6 window with route status
-* Terminal output with current path
-* Simulation of jamming + fallback routing
+* Route from source to target
+* Logs for fallback if jamming is triggered
+* Signal strength per node (telemetry)
 
 ---
 
-### 🚁️ ROS 2 Integration (Optional)
+## 🤖 AI Feature Detection (Optional)
 
 ```bash
-# Source your ROS 2 workspace
-source ~/satmil_gps_ws/install/setup.bash
-
-# Run GPS simulator node
-ros2 run gps_simulator gps_simulator_node.py
-
-# Run drone controller node
-ros2 run drone_control drone_controller_node.py
+python ai_module/detect_features.py --image_path="input/satellite.png"
+python ai_module/generate_graph.py --mask="output/mask.png"
 ```
+
+Outputs a new battlefield map CSV that is used for routing.
 
 ---
 
 ## 📊 Logs & Analytics
 
-All signal drops, telemetry, and route changes are logged in:
+Output files:
 
-```
-data/logs/signal_log.csv
-data/logs/route_history.json
-```
+* `data/logs/signal_log.csv`
+* `data/logs/route_history.json`
 
-You can visualize metrics using the analytics module.
+Use `analytics/` scripts to generate stats on signal loss, dropouts, fallback success.
 
 ---
 
-## 🎓 Skills Demonstrated
+## 🧠 Skills Demonstrated
 
 * Graph Algorithms (Dijkstra/A\*)
-* ROS 2 Nodes & Communication
-* PyQt6 GUI Development
-* Military Navigation & Jamming Simulation
-* Modular Software Architecture
-* Git & Test-driven Development
+* PyQt6 GUI Programming
+* ROS 2 nodes (optional)
+* Geospatial AI from satellite imagery
+* Signal health and telemetry analysis
+* Test-driven Python development
 
 ---
 
 ## 📜 License
 
-MIT License – free to use, modify, and distribute with credit.
+MIT License – free to use, modify, and distribute with attribution.
 
 ---
 
 ## ✉️ Contact
 
-**Author**: *\[SHREE CHATURVEDI]*
-📧 *[shreechaturvedi2004@gmail.com](mailto:shreechaturvedi2004@gmail.com)*\\
+**Author**: *Shree Chaturvedi*
+📧 *[shreechaturvedi2004@gmail.com](mailto:shreechaturvedi2004@gmail.com)*
+🌐 GitHub: `https://github.com/`Shreechaturvedi20
+
+---
+
+Ready to simulate satellite-routing and build AI-powered terrain systems!
